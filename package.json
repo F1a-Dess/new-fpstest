@@ -2,7 +2,7 @@
   "name": "fps-test",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.html",
   "dependencies": {
     "abortcontroller-polyfill": "^1.7.3",
     "ansi-styles": "^4.3.0",

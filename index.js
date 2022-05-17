@@ -1,11 +1,11 @@
 import * as THREE from 'three'
 
-import Stats from '../js/stats.module.js';
-import { GLTFLoader } from '../js/GLTFLoader.js';
-import { Octree } from '../js/Octree.js';
-import { OctreeHelper } from '../js/OctreeHelper.js';
-import { Capsule } from '../js/Capsule.js';
-import { GUI } from '../js/lil-gui.module.min.js';
+import Stats from './js/stats.module.js';
+import { GLTFLoader } from './js/GLTFLoader.js';
+import { Octree } from './js/Octree.js';
+import { OctreeHelper } from './js/OctreeHelper.js';
+import { Capsule } from './js/Capsule.js';
+import { GUI } from './js/lil-gui.module.min.js';
 
 const clock = new THREE.Clock();
 
@@ -385,7 +385,7 @@ function controls( deltaTime ) {
 
 
 // load the map and the collision 
-const mapLoader = new GLTFLoader().setPath( '../models/' );
+const mapLoader = new GLTFLoader().setPath( './models/' );
 
 mapLoader.load( 'room_japanese_GLB.glb', ( gltf ) => {
 
@@ -429,7 +429,7 @@ mapLoader.load( 'room_japanese_GLB.glb', ( gltf ) => {
 
 //models
 
-const cLoader = new GLTFLoader().setPath( '../models/' );
+const cLoader = new GLTFLoader().setPath( './models/' );
 cLoader.load( 'anime_loli.glb', function( gltf ) {
 
     scene.add( gltf.scene );
@@ -445,7 +445,7 @@ cLoader.load( 'anime_loli.glb', function( gltf ) {
 } );
 
 
-const c1Loader = new GLTFLoader().setPath( '../models/' );
+const c1Loader = new GLTFLoader().setPath( './models/' );
 c1Loader.load( 'scuffed_ae86.glb', function( gltf ) {
 
     scene.add( gltf.scene );
