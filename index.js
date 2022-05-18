@@ -390,24 +390,19 @@ const mapLoader = new GLTFLoader().setPath( './models/' );
 mapLoader.load( 'room_japanese_GLB.glb', ( gltf ) => {
 
     scene.add( gltf.scene );
-
     worldOctree.fromGraphNode( gltf.scene );
-
+    
     gltf.scene.traverse( child => {
 
         if ( child.isMesh ) {
 
             child.castShadow = true;
             child.receiveShadow = true;
-
             if ( child.material.map ) {
 
                 child.material.map.anisotropy = 4;
-
             }
-
         }
-
     } );
 
     const helper = new OctreeHelper( worldOctree );
@@ -419,48 +414,40 @@ mapLoader.load( 'room_japanese_GLB.glb', ( gltf ) => {
         .onChange( function ( value ) {
 
             helper.visible = value;
-
         } );
-
-    animate();
-
-} );
-
-
+        
+        animate();
+    } );
+    
+    
 //models
 
 const cLoader = new GLTFLoader().setPath( './models/' );
-cLoader.load( 'anime_loli.glb', function( gltf ) {
+cLoader.load( 'anime_loli.glb', ( gltf ) => {
 
-    scene.add( gltf.scene );
+    scene.add(gltf.scene);
 
-    gltf.scene.position.y= 0.2;
-    gltf.scene.position.x= 3;
-    gltf.scene.position.z= 3.4;
+    gltf.scene.position.set(3, 0.2, 3.5);
 
     gltf.scene.rotation.y= -1.4;
 
-    gltf.scene.scale = 1.5;
-    renderer.render( scene, camera );
+    gltf.scene.scale.set = 1.5;
+    
 } );
 
 
 const c1Loader = new GLTFLoader().setPath( './models/' );
-c1Loader.load( 'scuffed_ae86.glb', function( gltf ) {
+c1Loader.load( 'scuffed_ae86.glb', ( gltf ) => {
 
     scene.add( gltf.scene );
 
-    gltf.scene.position.y= 0.2;
-    gltf.scene.position.x= 0;
-    gltf.scene.position.z= -3;
+    gltf.scene.position.set(0.2, 0, -3.2);
 
     gltf.scene.rotation.y= -1.4;
 
-    gltf.scene.scale = 1;
-    renderer.render( scene, camera );
+    gltf.scene.scale.set = 1;
+    
 } );
-
-
 
 
 
@@ -497,23 +484,22 @@ function animate() {
 
     // we look for collisions in substeps to mitigate the risk of
     // an object traversing another too quickly for detection.
-
+    
     for ( let i = 0; i < STEPS_PER_FRAME; i ++ ) {
-
+        
         controls( deltaTime );
-
+        
         updatePlayer( deltaTime );
-
+        
         updateSpheres( deltaTime );
-
+        
         teleportPlayerIfOob();
-
+        
     }
-
+    
     renderer.render( scene, camera );
-
+    
     stats.update();
-
-    requestAnimationFrame( animate );
-
+    
+    requestAnimationFrame( animate );   
 }
